@@ -1,0 +1,14 @@
+diff --git a/cmake/OpenCVFindIPP.cmake b/cmake/OpenCVFindIPP.cmake
+index db02e6a..abdd411 100644
+--- a/cmake/OpenCVFindIPP.cmake
++++ b/cmake/OpenCVFindIPP.cmake
+@@ -229,7 +229,7 @@ function(set_ipp_variables _LATEST_VERSION)
+         endif()
+ 
+         if (UNIX)
+-            get_filename_component(INTEL_COMPILER_LIBRARY_DIR ${IPP_ROOT_DIR}/../lib REALPATH)
++            get_filename_component(INTEL_COMPILER_LIBRARY_DIR ${IPP_ROOT_DIR}/../compiler/lib REALPATH)
+             if (IPP_X64)
+                 if(NOT EXISTS ${INTEL_COMPILER_LIBRARY_DIR}/intel64)
+                     message(SEND_ERROR "Intel compiler EM64T libraries not found")
+
