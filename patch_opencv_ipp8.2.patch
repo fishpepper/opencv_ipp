@@ -1,3 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1d7d78a..d5fb772 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -332,6 +332,10 @@ else()
+   endif()
+ endif()
+ 
++#if(WITH_IPP AND IPP_FOUND)
++set(CMAKE_INSTALL_RPATH "${IPP_LIBRARY_DIRS}")
++#end if(WITH_IPP AND IPP_FOUND)
++
+ set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${OPENCV_LIB_INSTALL_PATH}")
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+ 
 diff --git a/cmake/OpenCVFindIPP.cmake b/cmake/OpenCVFindIPP.cmake
 index db02e6a..abdd411 100644
 --- a/cmake/OpenCVFindIPP.cmake
@@ -11,4 +26,3 @@ index db02e6a..abdd411 100644
              if (IPP_X64)
                  if(NOT EXISTS ${INTEL_COMPILER_LIBRARY_DIR}/intel64)
                      message(SEND_ERROR "Intel compiler EM64T libraries not found")
-
