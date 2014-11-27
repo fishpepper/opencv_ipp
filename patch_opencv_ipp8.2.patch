@@ -1,18 +1,15 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1d7d78a..d5fb772 100644
+index 1d7d78a..de37c79 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -332,6 +332,10 @@ else()
-   endif()
+@@ -951,6 +951,7 @@ status("  Other third-party libraries:")
+ if(WITH_IPP AND IPP_FOUND)
+   status("    Use IPP:" "${IPP_LATEST_VERSION_STR} [${IPP_LATEST_VERSION_MAJOR}.${IPP_LATEST_VERSION_MINOR}.${IPP_LATEST_VERSION_BUILD}]")
+   status("         at:" "${IPP_ROOT_DIR}")
++  set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_RPATH}:${IPP_LIBRARY_DIRS}")
+ else()
+   status("    Use IPP:"   WITH_IPP AND NOT IPP_FOUND THEN "IPP not found" ELSE NO)
  endif()
- 
-+#if(WITH_IPP AND IPP_FOUND)
-+set(CMAKE_INSTALL_RPATH "${IPP_LIBRARY_DIRS}")
-+#end if(WITH_IPP AND IPP_FOUND)
-+
- set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${OPENCV_LIB_INSTALL_PATH}")
- set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
- 
 diff --git a/cmake/OpenCVFindIPP.cmake b/cmake/OpenCVFindIPP.cmake
 index db02e6a..abdd411 100644
 --- a/cmake/OpenCVFindIPP.cmake
